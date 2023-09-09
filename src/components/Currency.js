@@ -3,7 +3,7 @@ import React, { useState} from 'react';
 const Currency = () => {
     //const { currency } = useContext(AppContext);
     const [selectedValue, setSelectedValue] = useState('');
-    const options = ['$ Dollar','£ Pound','€ Euro','₹ Ruppee'];
+    const options = ['£ Pound','$ Dollar','€ Euro','₹ Ruppee'];
     const handleSelectChange = (event) => {
         setSelectedValue("Currency ("+event.target.value+")");
         event.target.add("display", "none")
