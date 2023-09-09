@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
+
 const AllocationForm = (props) => {
     const { dispatch,remaining  } = useContext(AppContext);
 
@@ -10,11 +11,21 @@ const AllocationForm = (props) => {
 
     const submitEvent = () => {
 
-            if(cost > remaining) {
+        
+        /*if(remaining > budget)
+        {
+                alert("You cannot reduce the budget value lower than the spending");
+                setCost("");
+                return;
+        }*/
+
+        if(cost > remaining) {
                 alert("The value cannot exceed remaining funds  £"+remaining);
                 setCost("");
                 return;
             }
+
+            
 
         const expense = {
             name: name,
@@ -38,7 +49,7 @@ const AllocationForm = (props) => {
             <div className='row'>
 
             <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
-                    <div className="input-group-prepend">
+                <div className="input-group-prepend">
                 <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
                   </div>
                   <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
@@ -58,13 +69,13 @@ const AllocationForm = (props) => {
                         <option defaultValue value="Add" name="Add">Add</option>
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
-
+                    <span style={{ marginLeft: '2rem'}}>£</span>
                     <input
                         required='required'
                         type='number'
                         id='cost'
                         value={cost}
-                        style={{ marginLeft: '2rem' , size: 10}}
+                        style={{ marginLeft: '1rem' , size: 10}}
                         onChange={(event) => setCost(event.target.value)}>
                         </input>
 
@@ -79,4 +90,3 @@ const AllocationForm = (props) => {
 };
 
 export default AllocationForm;
-
