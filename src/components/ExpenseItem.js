@@ -14,6 +14,7 @@ const ExpenseItem = (props) => {
         });
     };
 
+    
     const increaseAllocation = (name) => {
         const expense = {
             name: name,
